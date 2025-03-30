@@ -1,0 +1,918 @@
+/* Variables CSS para temas */
+:root {
+    --desktop-bg: #0078d7;
+    --window-header-bg: #0078d7;
+    --window-header-text: white;
+    --window-bg: #f0f0f0;
+    --taskbar-bg: #202020;
+    --taskbar-text: white;
+    --start-button-bg: #0078d7;
+    --start-button-text: white;
+    --start-menu-bg: #202020;
+    --start-menu-text: white;
+    --icon-text: white;
+    --icon-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('wallpaper-windows.jpg');
+    background-size: cover;
+    background-position: center;
+    background-color: var(--desktop-bg); /* Fallback color if image not available */
+    overflow: hidden;
+}
+
+/* Iconos de escritorio */
+.desktop-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 80px);
+    grid-gap: 20px;
+    padding: 20px;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.icon span {
+    color: var(--icon-text);
+    text-align: center;
+    font-size: 12px;
+    text-shadow: var(--icon-text-shadow);
+}
+
+/* Ventanas */
+.window {
+    position: absolute;
+    background-color: var(--window-bg);
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+    overflow: hidden;
+    resize: both;
+    min-width: 400px;
+    min-height: 300px;
+    width: 600px;
+    height: 400px;
+    top: 100px;
+    left: 100px;
+}
+
+.window.active {
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.window-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--window-header-bg);
+    color: var(--window-header-text);
+    padding: 5px 10px;
+    cursor: move;
+}
+
+.window-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.window-controls {
+    display: flex;
+}
+
+.window-controls span {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    margin-left: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.window-controls span:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.close:hover {
+    background-color: #e81123 !important;
+}
+
+.window-content {
+    flex: 1;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Explorador de archivos */
+#file-explorer .window-content {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 150px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar ul {
+    list-style-type: none;
+}
+
+.sidebar li {
+    padding: 8px 5px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.sidebar li:hover {
+    background-color: #e5e5e5;
+}
+
+.main-content {
+    flex: 1;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.folder-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80px;
+    height: 90px;
+    margin: 10px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.folder-item:hover {
+    background-color: #e5e5e5;
+}
+
+.folder-item img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+
+.folder-item span {
+    text-align: center;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+/* Navegador */
+.browser-toolbar {
+    display: flex;
+    padding: 8px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.browser-toolbar button {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.browser-toolbar button:hover {
+    background-color: #e5e5e5;
+}
+
+.browser-address {
+    flex: 1;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.browser-view {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.browser-placeholder {
+    text-align: center;
+    color: #666;
+}
+
+/* Bloc de notas */
+.notepad-menu {
+    display: flex;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+}
+
+.notepad-menu span {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.notepad-menu span:hover {
+    background-color: #e5e5e5;
+}
+
+.notepad-area {
+    flex: 1;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    resize: none;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Calculadora */
+.calculator-display {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    height: 60px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 15px;
+    font-size: 24px;
+    font-weight: bold;
+    overflow: hidden;
+}
+
+.calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    padding: 10px;
+}
+
+.calc-btn {
+    height: 50px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.calc-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.operator {
+    background-color: #e1e1e1;
+}
+
+.equals {
+    background-color: #0078d7;
+    color: white;
+}
+
+.equals:hover {
+    background-color: #006cc1;
+}
+
+.clear {
+    background-color: #ff4d4d;
+    color: white;
+    grid-column: span 4;
+}
+
+.clear:hover {
+    background-color: #ff3333;
+}
+
+/* Barra de tareas */
+.taskbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: var(--taskbar-bg);
+    display: flex;
+    z-index: 1000;
+}
+
+.start-menu {
+    position: relative;
+}
+
+.start-button {
+    height: 100%;
+    padding: 0 15px;
+    background-color: var(--start-button-bg);
+    color: var(--start-button-text);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.start-button:hover {
+    background-color: #006cc1;
+}
+
+.start-menu-content {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    width: 300px;
+    background-color: var(--start-menu-bg);
+    border: 1px solid #333;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.start-menu.active .start-menu-content {
+    display: block;
+}
+
+.start-menu-header {
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    background-color: #0078d7;
+}
+
+.start-menu-items {
+    padding: 10px;
+}
+
+.start-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: var(--start-menu-text);
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.start-menu-item:hover {
+    background-color: #333;
+}
+
+.start-menu-item img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.power {
+    margin-top: 20px;
+    border-top: 1px solid #333;
+    padding-top: 10px;
+}
+
+.taskbar-items {
+    display: flex;
+    flex: 1;
+    padding: 0 10px;
+}
+
+.taskbar-item {
+    height: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-right: 5px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.taskbar-item.active {
+    background-color: #333;
+    border-bottom: 2px solid #0078d7;
+}
+
+.taskbar-item img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.system-tray {
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    color: white;
+}
+
+.system-tray img {
+    width: 16px;
+    height: 16px;
+    margin-left: 10px;
+}
+
+.time {
+    font-size: 12px;
+}
+
+/* Estilos para arrastrar ventanas */
+.dragging {
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Estilos para las aplicaciones de Office */
+
+/* Estilos comunes para Office */
+.office-toolbar {
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+}
+
+.office-menu {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.office-menu span {
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.office-menu span:hover {
+    background-color: #e5e5e5;
+}
+
+.formatting-toolbar {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+
+.font-family, .font-size {
+    height: 28px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 5px;
+}
+
+.format-btn {
+    width: 28px;
+    height: 28px;
+    margin-right: 5px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.format-btn:hover {
+    background-color: #e5e5e5;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f3f3f3;
+    border-top: 1px solid #ddd;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* Estilos para Word */
+.document-area {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.word-page {
+    width: 595px; /* Tamaño A4 */
+    min-height: 842px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 72px; /* Márgenes de 1 pulgada */
+    outline: none;
+    font-size: 12pt;
+    line-height: 1.5;
+}
+
+/* Estilos para Excel */
+.excel-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.excel-header-row {
+    display: flex;
+    background-color: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+}
+
+.excel-header-cell {
+    min-width: 100px;
+    height: 25px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #e9e9e9;
+}
+
+.excel-header-cell:first-child {
+    min-width: 40px;
+    background-color: #e9e9e9;
+}
+
+.excel-grid {
+    flex: 1;
+    overflow: auto;
+}
+
+.excel-row {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+}
+
+.excel-row-header {
+    min-width: 40px;
+    height: 25px;
+    border-right: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #e9e9e9;
+}
+
+.excel-cell {
+    min-width: 100px;
+    height: 25px;
+    border-right: 1px solid #ddd;
+    padding: 0 5px;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.excel-cell:focus {
+    border: 2px solid #0078d7;
+    padding: 0 3px;
+}
+
+.excel-cell[data-formula] {
+    background-color: #f9f9f9;
+}
+
+/* Barra de fórmulas y funciones matemáticas para Excel */
+.formula-bar {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    flex: 1;
+}
+
+.formula-btn {
+    background-color: #e6f0ff;
+    font-weight: bold;
+    color: #0078d7;
+    margin-right: 10px;
+}
+
+.formula-input {
+    flex: 1;
+    height: 28px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0 8px;
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+}
+
+.formula-menu {
+    position: absolute;
+    width: 250px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.formula-category {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+}
+
+.formula-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+}
+
+.formula-item:hover {
+    background-color: #e6f0ff;
+}
+
+.formula-item::before {
+    content: 'fx';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #e6f0ff;
+    color: #0078d7;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 20px;
+    margin-right: 8px;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+/* Estilos para PowerPoint */
+.powerpoint-container {
+    flex: 1;
+    display: flex;
+    background-color: #f5f5f5;
+}
+
+.slide-thumbnails {
+    width: 150px;
+    background-color: #e9e9e9;
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.slide-thumbnail {
+    height: 80px;
+    background-color: white;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 12px;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.slide-thumbnail:hover {
+    border-color: #0078d7;
+}
+
+.slide-thumbnail.active {
+    border: 2px solid #0078d7;
+    background-color: #e6f0ff;
+}
+
+.slide-thumbnail.new-slide-btn {
+    background-color: #f0f0f0;
+    border: 1px dashed #999;
+    color: #666;
+}
+
+.slide-thumbnail.new-slide-btn:hover {
+    background-color: #e6e6e6;
+}
+
+/* Botones de diseu00f1o para PowerPoint */
+.slide-layouts {
+    display: flex;
+    margin-left: 20px;
+}
+
+.layout-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.layout-btn:hover {
+    background-color: #e6e6e6;
+}
+
+.slide-editor {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+}
+
+.slide {
+    width: 640px;
+    height: 360px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    outline: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    width: 100%;
+}
+
+.slide h3 {
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+    color: #666;
+}
+
+.slide-content {
+    width: 100%;
+    flex: 1;
+    padding: 10px;
+}
+
+.two-column {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    border: 1px dashed #ccc;
+    margin: 0 5px;
+}
+
+/* Estilos para la ventana de configuración */
+.settings-container {
+    padding: 20px;
+    overflow: auto;
+    height: 100%;
+}
+
+.settings-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+}
+
+.settings-section h3 {
+    margin-bottom: 10px;
+    color: #444;
+}
+
+.settings-section p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.theme-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.theme-option {
+    width: 200px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.theme-option:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.theme-option.active {
+    border-color: #0078d7;
+}
+
+.theme-preview {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.theme-info {
+    padding: 10px;
+}
+
+.theme-info h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.theme-select-btn {
+    width: 100%;
+    padding: 8px;
+    background-color: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.theme-select-btn:hover {
+    background-color: #006cc1;
+}
